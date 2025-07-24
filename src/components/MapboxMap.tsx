@@ -15,8 +15,8 @@ const MapboxMap: React.FC<MapboxMapProps> = ({ className }) => {
 
   // HDA Company Limited coordinates in Mbeya, Tanzania
   // Exact coordinates for Iyunga, Mbeya
-  const lng = 33.411; // Longitude for Iyunga
-  const lat = -8.937; // Latitude for Iyunga
+  const lng = 33.41809203059689; // Precise longitude for HDA Company Limited
+  const lat = -8.916664593717877; // Precise latitude for HDA Company Limited
   const zoom = 14;
 
   useEffect(() => {
