@@ -92,7 +92,7 @@ const HeroCarousel = () => {
   ];
 
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative h-screen md:h-screen flex items-center justify-center overflow-hidden">
       <Carousel
         opts={{
           align: "start",
@@ -118,7 +118,7 @@ const HeroCarousel = () => {
                     initial={{ opacity: 0, x: 80, y: -80, scale: 0.8 }}
                     animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
                     transition={{ duration: 1.2, type: "spring", bounce: 0.4 }}
-                    className="hidden sm:block absolute top-6 right-6 w-32 h-32 md:w-44 md:h-44 z-30 shadow-xl rounded-lg pointer-events-none"
+                    className="hidden sm:block absolute top-6 right-6 w-24 h-24 sm:w-32 sm:h-32 md:w-44 md:h-44 z-30 shadow-xl rounded-lg pointer-events-none"
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 to-slate-800/85 z-10"></div>
@@ -127,15 +127,15 @@ const HeroCarousel = () => {
                   style={{ backgroundImage: `url('${slide.background}')` }}
                 ></div>
                 
-                <div className="relative z-20 text-center max-w-4xl mx-auto px-4 sm:px-6 flex flex-col justify-center min-h-screen">
+                <div className="relative z-20 text-center max-w-4xl mx-auto px-4 sm:px-6 flex flex-col justify-center h-full py-20">
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="mb-6"
+                    className="mb-4 sm:mb-6"
                   >
                     {slide.icon && (
-                      <slide.icon className="h-16 w-16 text-yellow-400 mx-auto mb-4" />
+                      <slide.icon className="h-12 w-12 sm:h-16 sm:w-16 text-yellow-400 mx-auto mb-3 sm:mb-4" />
                     )}
                   </motion.div>
                   
@@ -143,7 +143,7 @@ const HeroCarousel = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-tight"
+                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-tight"
                   >
                     {slide.title}
                     <span className="text-yellow-400 block">{slide.subtitle}</span>
@@ -163,7 +163,7 @@ const HeroCarousel = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pb-4 sm:pb-8"
+                    className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
                   >
                     <Button 
                       onClick={slide.primaryButton.action}
@@ -171,7 +171,7 @@ const HeroCarousel = () => {
                       className="bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-semibold px-4 sm:px-6 md:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg group transition-all duration-300 w-full sm:w-auto min-h-[44px] sm:min-h-[48px]"
                     >
                       {slide.primaryButton.text}
-                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
                     </Button>
                     <Button 
                       onClick={slide.secondaryButton.action}
@@ -193,7 +193,7 @@ const HeroCarousel = () => {
                       scale: [1, 1.2, 1]
                     }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-1/4 left-1/4 w-3 h-3 bg-yellow-400 rounded-full opacity-60"
+                    className="absolute top-1/4 left-1/4 w-2 h-2 sm:w-3 sm:h-3 bg-yellow-400 rounded-full opacity-60"
                   ></motion.div>
                   <motion.div
                     animate={{ 
@@ -202,7 +202,7 @@ const HeroCarousel = () => {
                       rotate: [0, -360]
                     }}
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                    className="absolute top-1/3 right-1/3 w-4 h-4 bg-red-400 rounded-full opacity-40"
+                    className="absolute top-1/3 right-1/3 w-3 h-3 sm:w-4 sm:h-4 bg-red-400 rounded-full opacity-40"
                   ></motion.div>
                   <motion.div
                     animate={{ 
@@ -219,15 +219,15 @@ const HeroCarousel = () => {
           ))}
         </CarouselContent>
         
-        <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-slate-800/80 border-yellow-400/50 text-yellow-400 hover:bg-yellow-400 hover:text-slate-900" />
-        <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-slate-800/80 border-yellow-400/50 text-yellow-400 hover:bg-yellow-400 hover:text-slate-900" />
+        <CarouselPrevious className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 bg-slate-800/80 border-yellow-400/50 text-yellow-400 hover:bg-yellow-400 hover:text-slate-900 w-8 h-8 sm:w-10 sm:h-10" />
+        <CarouselNext className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 bg-slate-800/80 border-yellow-400/50 text-yellow-400 hover:bg-yellow-400 hover:text-slate-900 w-8 h-8 sm:w-10 sm:h-10" />
         
         {/* Carousel Indicators */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex space-x-2">
+        <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex space-x-2">
           {slides.map((_, index) => (
             <div 
               key={index}
-              className="w-3 h-3 rounded-full bg-yellow-400/50 hover:bg-yellow-400 transition-colors cursor-pointer"
+              className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-400/50 hover:bg-yellow-400 transition-colors cursor-pointer"
             ></div>
           ))}
         </div>
