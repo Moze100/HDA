@@ -80,5 +80,3 @@ const MapboxMap: React.FC<MapboxMapProps> = ({ className }) => {
 };
 
 export default MapboxMap;
-
-export default MapboxMap
