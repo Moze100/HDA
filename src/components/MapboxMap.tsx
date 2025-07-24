@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 // You'll need to get your Mapbox access token from https://account.mapbox.com/
-const MAPBOX_TOKEN = 'pk.eyJ1IjoiaGRhY29tcGFueSIsImEiOiJjbHpkZXh4eHgwMDAwMmlyMGZxbGZxbGZxIn0.example'; // Replace with your actual token
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
 interface MapboxMapProps {
   className?: string;
@@ -24,6 +24,11 @@ const MapboxMap: React.FC<MapboxMapProps> = ({ className }) => {
     
     if (!mapContainer.current) return;
 
+    // Check if token is available
+    if (!MAPBOX_TOKEN) {
+      console.error('Mapbox access token is not configured. Please add VITE_MAPBOX_ACCESS_TOKEN to your .env file.');
+      return;
+    }
     // Set the access token
     mapboxgl.accessToken = MAPBOX_TOKEN;
 
