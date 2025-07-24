@@ -1,86 +1,23 @@
-import React, { useRef, useEffect } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
-
-// You'll need to get your Mapbox access token from https://account.mapbox.com/
-const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
+import React from 'react';
 
 interface MapboxMapProps {
   className?: string;
 }
 
 const MapboxMap: React.FC<MapboxMapProps> = ({ className }) => {
-  const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<mapboxgl.Map | null>(null);
-
-  // HDA Company Limited coordinates in Mbeya, Tanzania
-  // Exact coordinates for Iyunga, Mbeya
-  const lng = 33.41809203059689; // Precise longitude for HDA Company Limited
-  const lat = -8.916664593717877; // Precise latitude for HDA Company Limited
-  const zoom = 14;
-
-  useEffect(() => {
-    if (map.current) return; // Initialize map only once
-    
-    if (!mapContainer.current) return;
-
-    // Check if token is available
-    if (!MAPBOX_TOKEN) {
-      console.error('Mapbox access token is not configured. Please add VITE_MAPBOX_ACCESS_TOKEN to your .env file.');
-      return;
-    }
-    // Set the access token
-    mapboxgl.accessToken = MAPBOX_TOKEN;
-
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v12',
-      center: [lng, lat],
-      zoom: zoom,
-      attributionControl: false
-    });
-
-    // Add navigation controls
-    map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
-
-    // Add a marker for HDA Company Limited
-    const marker = new mapboxgl.Marker({
-      color: '#EAB308', // Yellow color matching the theme
-      scale: 1.2
-    })
-      .setLngLat([lng, lat])
-      .setPopup(
-        new mapboxgl.Popup({ offset: 25 })
-          .setHTML(`
-            <div style="padding: 10px; font-family: system-ui;">
-              <h3 style="margin: 0 0 8px 0; color: #1e293b; font-weight: bold;">HDA Company Limited</h3>
-              <p style="margin: 0 0 4px 0; color: #475569; font-size: 14px;">Street: Maendeleo</p>
-              <p style="margin: 0 0 4px 0; color: #475569; font-size: 14px;">Ward: Iyunga</p>
-              <p style="margin: 0 0 4px 0; color: #475569; font-size: 14px;">Jasma Cash & Carry building</p>
-              <p style="margin: 0 0 8px 0; color: #475569; font-size: 14px;">Mbeya, Tanzania</p>
-              <p style="margin: 0; color: #059669; font-size: 14px; font-weight: 500;">📞 +255753392262</p>
-            </div>
-          `)
-      )
-      .addTo(map.current);
-
-    // Show popup by default
-    marker.getPopup().addTo(map.current);
-
-    // Clean up on unmount
-    return () => {
-      if (map.current) {
-        map.current.remove();
-      }
-    };
-  }, []);
-
   return (
-    <div 
-      ref={mapContainer} 
-      className={`w-full h-96 rounded-lg ${className}`}
-      style={{ minHeight: '400px' }}
-    />
+    <div className={`w-full h-96 rounded-lg overflow-hidden ${className}`}>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.123456789!2d33.41809203059689!3d-8.916664593717877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwNTUnMDAuMCJTIDMzwroyNScwNS4xIkU!5e0!3m2!1sen!2stz!4v1234567890123!5m2!1sen!2stz"
+        width="100%"
+        height="100%"
+        style={{ border: 0, minHeight: '400px' }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        title="HDA Company Limited Location - Iyunga, Mbeya, Tanzania"
+      />
+    </div>
   );
 };
 
