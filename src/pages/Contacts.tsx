@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslation } from "react-i18next";
+import MapboxMap from "@/components/MapboxMap";
 
 const Contacts = () => {
   const { t } = useTranslation();
@@ -233,16 +234,9 @@ const Contacts = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="bg-slate-800 p-4 rounded-lg"
+            className="bg-slate-800 p-4 rounded-lg overflow-hidden"
           >
-            <div className="bg-slate-600 h-96 rounded-lg flex items-center justify-center">
-              <div className="text-center text-gray-400">
-                <MapPin className="h-16 w-16 mx-auto mb-4" />
-                <p className="text-lg">Interactive Map Coming Soon</p>
-                <p className="text-sm">Street: Maendeleo, Ward: Iyunga, Mbeya</p>
-                <p className="text-sm">Jasma Cash & Carry building</p>
-              </div>
-            </div>
+            <MapboxMap className="border border-slate-600" />
           </motion.div>
         </div>
       </section>
